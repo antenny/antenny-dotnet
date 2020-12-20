@@ -1,0 +1,41 @@
+name: python ci
+on:
+  push:
+    branches: [master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '2.1.519'
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
+    - name: Install
+      run: dotnet restore
+    - name: Build
+      run: dotnet build -c Release --no-restore
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
+    - name: Pack
+      run: dotnet pack --no-build -c Release src/Antenny/Antenny.csproj --output .
+    - name: Publish
+      run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}} --skip-duplicate
+    - name: Version
+      run: |
+        dotnet tool install -g dotnet-version-cli
+        version="$(dotnet version -f src/Antenny/Antenny.csproj --output-format=json | jq -r '.version')"
+        echo "::set-output name=VERSION::$version"
+    - name: Release
+      id: release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.version.outputs.VERSION }}
+        release_name: Release ${{ steps.version.outputs.VERSION }}
+        draft: false
+        prerelease: false
