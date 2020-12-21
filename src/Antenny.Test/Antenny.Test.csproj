@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Antenny.Test</AssemblyName>
     <RootNamespace>Antenny.Test</RootNamespace>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 

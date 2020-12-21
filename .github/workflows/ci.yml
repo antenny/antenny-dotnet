@@ -11,7 +11,7 @@ jobs:
     - name: Dotnet
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '2.1.519'
+        dotnet-version: '3.1.x'
       env:
         NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
     - name: Install
@@ -27,7 +27,7 @@ jobs:
     - name: Version
       run: |
         dotnet tool install -g dotnet-version-cli
-        version="$(dotnet-version -f ./src/Antenny/Antenny.csproj --output-format=json | jq -r '.currentVersion')"
+        version="$(dotnet tool run dotnet-version -f src/Antenny/Antenny.csproj --output-format=json | jq -r '.currentVersion'))"
         echo "::debug name=version::version $version"
         echo "::set-output name=VERSION::$version"
     - name: Release
