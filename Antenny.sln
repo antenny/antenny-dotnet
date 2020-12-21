@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antenny", "src\Antenny\Antenny.csproj", "{D77BFC22-678D-4E04-96DB-026F01E5E79B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antenny", "src\Antenny\Antenny.csproj", "{20074D8A-00A7-41BF-B505-4D296591315A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antenny.Test", "src\Antenny.Test\Antenny.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D77BFC22-678D-4E04-96DB-026F01E5E79B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D77BFC22-678D-4E04-96DB-026F01E5E79B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D77BFC22-678D-4E04-96DB-026F01E5E79B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D77BFC22-678D-4E04-96DB-026F01E5E79B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20074D8A-00A7-41BF-B505-4D296591315A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20074D8A-00A7-41BF-B505-4D296591315A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20074D8A-00A7-41BF-B505-4D296591315A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20074D8A-00A7-41BF-B505-4D296591315A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU

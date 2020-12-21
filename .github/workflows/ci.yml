@@ -28,7 +28,7 @@ jobs:
       run: |
         dotnet tool install -g dotnet-version-cli
         export PATH="$PATH:/root/.dotnet/tools"
-        dotnet version -f ./src/Antenny/Antenny.csproj --output-format=json > verison.json
+        dotnet-version -f ./src/Antenny/Antenny.csproj --output-format=json > verison.json
         version="$(jq -r '.version' version.json)"
         echo "::set-output name=VERSION::$version"
     - name: Release
