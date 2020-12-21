@@ -24,10 +24,11 @@ jobs:
       run: dotnet pack --no-build -c Release src/Antenny/Antenny.csproj --output .
     - name: Publish
       run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
+    - name: Tools
+      run: dotnet tool install -g dotnet-version-cli
     - name: Version
       run: |
-        dotnet tool install -g dotnet-version-cli
-        version="$(dotnet tool run dotnet-version -f src/Antenny/Antenny.csproj --output-format=json | jq -r '.currentVersion')"
+        version="$(dotnet version -f ./src/Antenny/Antenny.csproj --output-format=json | jq -r '.currentVersion')"
         echo "::debug name=version::version $version"
         echo "::set-output name=VERSION::$version"
     - name: Release
