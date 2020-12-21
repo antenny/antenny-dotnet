@@ -28,10 +28,7 @@ jobs:
       run: |
         dotnet tool install -g dotnet-version-cli
         export PATH="$PATH:/root/.dotnet/tools"
-        echo "::debug::$(dotnet-version -f ./src/Antenny/Antenny.csproj --output-format=json)"
-        echo "::debug::$$(dotnet-version -f ./src/Antenny/Antenny.csproj --output-format=json | jq -r '.version')"
-        version="$(dotnet-version -f ./src/Antenny/Antenny.csproj --output-format=json | jq -r '.version')"
-        echo "::debug::$version"
+        version="$(dotnet-version -f ./src/Antenny/Antenny.csproj --output-format=json | jq -r '.currentVersion')"
         echo "::set-output name=VERSION::$version"
     - name: Release
       id: release
