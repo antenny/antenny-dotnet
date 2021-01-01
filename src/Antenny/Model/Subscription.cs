@@ -32,62 +32,23 @@ namespace Antenny.Model
     public partial class Subscription : IEquatable<Subscription>, IValidatableObject
     {
         /// <summary>
-        /// Defines Status
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum StatusEnum
-        {
-            /// <summary>
-            /// Enum PENDING for value: PENDING
-            /// </summary>
-            [EnumMember(Value = "PENDING")]
-            PENDING = 1,
-
-            /// <summary>
-            /// Enum CONNECTING for value: CONNECTING
-            /// </summary>
-            [EnumMember(Value = "CONNECTING")]
-            CONNECTING = 2,
-
-            /// <summary>
-            /// Enum CONNECTED for value: CONNECTED
-            /// </summary>
-            [EnumMember(Value = "CONNECTED")]
-            CONNECTED = 3,
-
-            /// <summary>
-            /// Enum ERRORED for value: ERRORED
-            /// </summary>
-            [EnumMember(Value = "ERRORED")]
-            ERRORED = 4,
-
-            /// <summary>
-            /// Enum CANCELED for value: CANCELED
-            /// </summary>
-            [EnumMember(Value = "CANCELED")]
-            CANCELED = 5
-
-        }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
-        public StatusEnum? Status { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="Subscription" /> class.
         /// </summary>
         /// <param name="id">id.</param>
         /// <param name="name">name.</param>
+        /// <param name="customerId">customerId.</param>
+        /// <param name="region">region.</param>
         /// <param name="resource">resource.</param>
         /// <param name="endpoint">endpoint.</param>
         /// <param name="status">status.</param>
         /// <param name="created">created.</param>
         /// <param name="modified">modified.</param>
-        public Subscription(Guid id = default(Guid), string name = default(string), Resource resource = default(Resource), Endpoint endpoint = default(Endpoint), StatusEnum? status = default(StatusEnum?), DateTime created = default(DateTime), DateTime modified = default(DateTime))
+        public Subscription(Guid id = default(Guid), string name = default(string), Guid customerId = default(Guid), string region = default(string), Resource resource = default(Resource), Endpoint endpoint = default(Endpoint), string status = default(string), DateTime created = default(DateTime), DateTime modified = default(DateTime))
         {
             this.Id = id;
             this.Name = name;
+            this.CustomerId = customerId;
+            this.Region = region;
             this.Resource = resource;
             this.Endpoint = endpoint;
             this.Status = status;
@@ -108,6 +69,18 @@ namespace Antenny.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or Sets CustomerId
+        /// </summary>
+        [DataMember(Name = "customerId", EmitDefaultValue = false)]
+        public Guid CustomerId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Region
+        /// </summary>
+        [DataMember(Name = "region", EmitDefaultValue = false)]
+        public string Region { get; set; }
+
+        /// <summary>
         /// Gets or Sets Resource
         /// </summary>
         [DataMember(Name = "resource", EmitDefaultValue = false)]
@@ -118,6 +91,12 @@ namespace Antenny.Model
         /// </summary>
         [DataMember(Name = "endpoint", EmitDefaultValue = false)]
         public Endpoint Endpoint { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", EmitDefaultValue = false)]
+        public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets Created
@@ -143,6 +122,8 @@ namespace Antenny.Model
             sb.Append("class Subscription {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  CustomerId: ").Append(CustomerId).Append("\n");
+            sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("  Resource: ").Append(Resource).Append("\n");
             sb.Append("  Endpoint: ").Append(Endpoint).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
@@ -193,6 +174,16 @@ namespace Antenny.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.CustomerId == input.CustomerId ||
+                    (this.CustomerId != null &&
+                    this.CustomerId.Equals(input.CustomerId))
+                ) && 
+                (
+                    this.Region == input.Region ||
+                    (this.Region != null &&
+                    this.Region.Equals(input.Region))
+                ) && 
+                (
                     this.Resource == input.Resource ||
                     (this.Resource != null &&
                     this.Resource.Equals(input.Resource))
@@ -204,7 +195,8 @@ namespace Antenny.Model
                 ) && 
                 (
                     this.Status == input.Status ||
-                    this.Status.Equals(input.Status)
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 ) && 
                 (
                     this.Created == input.Created ||
@@ -231,11 +223,16 @@ namespace Antenny.Model
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.CustomerId != null)
+                    hashCode = hashCode * 59 + this.CustomerId.GetHashCode();
+                if (this.Region != null)
+                    hashCode = hashCode * 59 + this.Region.GetHashCode();
                 if (this.Resource != null)
                     hashCode = hashCode * 59 + this.Resource.GetHashCode();
                 if (this.Endpoint != null)
                     hashCode = hashCode * 59 + this.Endpoint.GetHashCode();
-                hashCode = hashCode * 59 + this.Status.GetHashCode();
+                if (this.Status != null)
+                    hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.Created != null)
                     hashCode = hashCode * 59 + this.Created.GetHashCode();
                 if (this.Modified != null)

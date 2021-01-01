@@ -5,6 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Guid** |  | [optional] 
 **Name** | **string** |  | [optional] 
+**CustomerId** | **Guid** |  | [optional] 
+**Region** | **string** |  | [optional] 
 **Resource** | [**Resource**](Resource.md) |  | [optional] 
 **Endpoint** | [**Endpoint**](Endpoint.md) |  | [optional] 
 **Status** | **string** |  | [optional] 

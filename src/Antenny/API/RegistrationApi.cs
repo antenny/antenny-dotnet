@@ -33,7 +33,7 @@ namespace Antenny.API
         /// <exception cref="Antenny.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="custId">Customer Id for registration</param>
         /// <returns>Registration</returns>
-        Registration GetRegistration(Guid custId);
+        Registration GetRegistration(string custId);
 
         /// <summary>
         /// Gets a customers registration
@@ -44,7 +44,7 @@ namespace Antenny.API
         /// <exception cref="Antenny.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="custId">Customer Id for registration</param>
         /// <returns>ApiResponse of Registration</returns>
-        ApiResponse<Registration> GetRegistrationWithHttpInfo(Guid custId);
+        ApiResponse<Registration> GetRegistrationWithHttpInfo(string custId);
         #endregion Synchronous Operations
     }
 
@@ -64,7 +64,7 @@ namespace Antenny.API
         /// <param name="custId">Customer Id for registration</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Registration</returns>
-        System.Threading.Tasks.Task<Registration> GetRegistrationAsync(Guid custId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Registration> GetRegistrationAsync(string custId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a customers registration
@@ -76,7 +76,7 @@ namespace Antenny.API
         /// <param name="custId">Customer Id for registration</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Registration)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Registration>> GetRegistrationWithHttpInfoAsync(Guid custId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Registration>> GetRegistrationWithHttpInfoAsync(string custId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -203,7 +203,7 @@ namespace Antenny.API
         /// <exception cref="Antenny.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="custId">Customer Id for registration</param>
         /// <returns>Registration</returns>
-        public Registration GetRegistration(Guid custId)
+        public Registration GetRegistration(string custId)
         {
             Antenny.Client.ApiResponse<Registration> localVarResponse = GetRegistrationWithHttpInfo(custId);
             return localVarResponse.Data;
@@ -215,8 +215,12 @@ namespace Antenny.API
         /// <exception cref="Antenny.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="custId">Customer Id for registration</param>
         /// <returns>ApiResponse of Registration</returns>
-        public Antenny.Client.ApiResponse<Registration> GetRegistrationWithHttpInfo(Guid custId)
+        public Antenny.Client.ApiResponse<Registration> GetRegistrationWithHttpInfo(string custId)
         {
+            // verify the required parameter 'custId' is set
+            if (custId == null)
+                throw new Antenny.Client.ApiException(400, "Missing required parameter 'custId' when calling RegistrationApi->GetRegistration");
+
             Antenny.Client.RequestOptions localVarRequestOptions = new Antenny.Client.RequestOptions();
 
             String[] _contentTypes = new String[] {
@@ -260,7 +264,7 @@ namespace Antenny.API
         /// <param name="custId">Customer Id for registration</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Registration</returns>
-        public async System.Threading.Tasks.Task<Registration> GetRegistrationAsync(Guid custId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Registration> GetRegistrationAsync(string custId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Antenny.Client.ApiResponse<Registration> localVarResponse = await GetRegistrationWithHttpInfoAsync(custId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -273,8 +277,12 @@ namespace Antenny.API
         /// <param name="custId">Customer Id for registration</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Registration)</returns>
-        public async System.Threading.Tasks.Task<Antenny.Client.ApiResponse<Registration>> GetRegistrationWithHttpInfoAsync(Guid custId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Antenny.Client.ApiResponse<Registration>> GetRegistrationWithHttpInfoAsync(string custId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'custId' is set
+            if (custId == null)
+                throw new Antenny.Client.ApiException(400, "Missing required parameter 'custId' when calling RegistrationApi->GetRegistration");
+
 
             Antenny.Client.RequestOptions localVarRequestOptions = new Antenny.Client.RequestOptions();
 

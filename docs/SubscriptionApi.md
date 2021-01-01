@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 
 <a name="listsubscriptions"></a>
 # **ListSubscriptions**
-> SubscriptionList ListSubscriptions (Guid custId, string sort = null, int? limit = null, string startKey = null)
+> SubscriptionList ListSubscriptions (string custId, string sort = null, int? limit = null, string startKey = null)
 
 Gets a list of subscriptions
 
@@ -274,7 +274,7 @@ namespace Example
             // config.AddApiKeyPrefix("X-API-Key", "Bearer");
 
             var apiInstance = new SubscriptionApi(config);
-            var custId = new Guid(); // Guid | Customer Id to get subscriptions
+            var custId = custId_example;  // string | Customer Id to get subscriptions
             var sort = sort_example;  // string | Defines sort direction (optional) 
             var limit = 56;  // int? | Limits the number of returned items (optional) 
             var startKey = startKey_example;  // string | Defines start of page of results (optional) 
@@ -300,7 +300,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **custId** | [**Guid**](Guid.md)| Customer Id to get subscriptions | 
+ **custId** | **string**| Customer Id to get subscriptions | 
  **sort** | **string**| Defines sort direction | [optional] 
  **limit** | **int?**| Limits the number of returned items | [optional] 
  **startKey** | **string**| Defines start of page of results | [optional] 

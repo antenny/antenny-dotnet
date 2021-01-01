@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getregistration"></a>
 # **GetRegistration**
-> Registration GetRegistration (Guid custId)
+> Registration GetRegistration (string custId)
 
 Gets a customers registration
 
@@ -35,7 +35,7 @@ namespace Example
             // config.AddApiKeyPrefix("X-API-Key", "Bearer");
 
             var apiInstance = new RegistrationApi(config);
-            var custId = new Guid(); // Guid | Customer Id for registration
+            var custId = custId_example;  // string | Customer Id for registration
 
             try
             {
@@ -58,7 +58,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **custId** | [**Guid**](Guid.md)| Customer Id for registration | 
+ **custId** | **string**| Customer Id for registration | 
 
 ### Return type
 

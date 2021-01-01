@@ -32,62 +32,17 @@ namespace Antenny.Model
     public partial class Registration : IEquatable<Registration>, IValidatableObject
     {
         /// <summary>
-        /// Registration status
-        /// </summary>
-        /// <value>Registration status</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum StatusEnum
-        {
-            /// <summary>
-            /// Enum SUBSCRIBEPENDING for value: SUBSCRIBE-PENDING
-            /// </summary>
-            [EnumMember(Value = "SUBSCRIBE-PENDING")]
-            SUBSCRIBEPENDING = 1,
-
-            /// <summary>
-            /// Enum SUBSCRIBESUCCESS for value: SUBSCRIBE-SUCCESS
-            /// </summary>
-            [EnumMember(Value = "SUBSCRIBE-SUCCESS")]
-            SUBSCRIBESUCCESS = 2,
-
-            /// <summary>
-            /// Enum SUBSCRIBEFAIL for value: SUBSCRIBE-FAIL
-            /// </summary>
-            [EnumMember(Value = "SUBSCRIBE-FAIL")]
-            SUBSCRIBEFAIL = 3,
-
-            /// <summary>
-            /// Enum UNSUBSCRIBEPENDING for value: UNSUBSCRIBE-PENDING
-            /// </summary>
-            [EnumMember(Value = "UNSUBSCRIBE-PENDING")]
-            UNSUBSCRIBEPENDING = 4,
-
-            /// <summary>
-            /// Enum UNSUBSCRIBESUCCESS for value: UNSUBSCRIBE-SUCCESS
-            /// </summary>
-            [EnumMember(Value = "UNSUBSCRIBE-SUCCESS")]
-            UNSUBSCRIBESUCCESS = 5
-
-        }
-
-        /// <summary>
-        /// Registration status
-        /// </summary>
-        /// <value>Registration status</value>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
-        public StatusEnum? Status { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="Registration" /> class.
         /// </summary>
         /// <param name="id">id.</param>
         /// <param name="customerId">customerId.</param>
-        /// <param name="secret">Signing secret.</param>
-        /// <param name="status">Registration status.</param>
+        /// <param name="secret">secret.</param>
+        /// <param name="status">status.</param>
         /// <param name="clients">clients.</param>
         /// <param name="subscriptions">subscriptions.</param>
         /// <param name="created">created.</param>
         /// <param name="modified">modified.</param>
-        public Registration(Guid id = default(Guid), Guid customerId = default(Guid), string secret = default(string), StatusEnum? status = default(StatusEnum?), List<string> clients = default(List<string>), List<string> subscriptions = default(List<string>), DateTime created = default(DateTime), DateTime modified = default(DateTime))
+        public Registration(Guid id = default(Guid), Guid customerId = default(Guid), string secret = default(string), string status = default(string), List<string> clients = default(List<string>), List<string> subscriptions = default(List<string>), DateTime created = default(DateTime), DateTime modified = default(DateTime))
         {
             this.Id = id;
             this.CustomerId = customerId;
@@ -112,11 +67,16 @@ namespace Antenny.Model
         public Guid CustomerId { get; set; }
 
         /// <summary>
-        /// Signing secret
+        /// Gets or Sets Secret
         /// </summary>
-        /// <value>Signing secret</value>
         [DataMember(Name = "secret", EmitDefaultValue = false)]
         public string Secret { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", EmitDefaultValue = false)]
+        public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets Clients
@@ -211,7 +171,8 @@ namespace Antenny.Model
                 ) && 
                 (
                     this.Status == input.Status ||
-                    this.Status.Equals(input.Status)
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 ) && 
                 (
                     this.Clients == input.Clients ||
@@ -252,7 +213,8 @@ namespace Antenny.Model
                     hashCode = hashCode * 59 + this.CustomerId.GetHashCode();
                 if (this.Secret != null)
                     hashCode = hashCode * 59 + this.Secret.GetHashCode();
-                hashCode = hashCode * 59 + this.Status.GetHashCode();
+                if (this.Status != null)
+                    hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.Clients != null)
                     hashCode = hashCode * 59 + this.Clients.GetHashCode();
                 if (this.Subscriptions != null)

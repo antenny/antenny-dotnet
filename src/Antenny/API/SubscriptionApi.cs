@@ -104,7 +104,7 @@ namespace Antenny.API
         /// <param name="limit">Limits the number of returned items (optional)</param>
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <returns>SubscriptionList</returns>
-        SubscriptionList ListSubscriptions(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string));
+        SubscriptionList ListSubscriptions(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string));
 
         /// <summary>
         /// Gets a list of subscriptions
@@ -118,7 +118,7 @@ namespace Antenny.API
         /// <param name="limit">Limits the number of returned items (optional)</param>
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <returns>ApiResponse of SubscriptionList</returns>
-        ApiResponse<SubscriptionList> ListSubscriptionsWithHttpInfo(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string));
+        ApiResponse<SubscriptionList> ListSubscriptionsWithHttpInfo(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string));
         #endregion Synchronous Operations
     }
 
@@ -212,7 +212,7 @@ namespace Antenny.API
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SubscriptionList</returns>
-        System.Threading.Tasks.Task<SubscriptionList> ListSubscriptionsAsync(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SubscriptionList> ListSubscriptionsAsync(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a list of subscriptions
@@ -227,7 +227,7 @@ namespace Antenny.API
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SubscriptionList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SubscriptionList>> ListSubscriptionsWithHttpInfoAsync(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<SubscriptionList>> ListSubscriptionsWithHttpInfoAsync(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -730,7 +730,7 @@ namespace Antenny.API
         /// <param name="limit">Limits the number of returned items (optional)</param>
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <returns>SubscriptionList</returns>
-        public SubscriptionList ListSubscriptions(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string))
+        public SubscriptionList ListSubscriptions(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string))
         {
             Antenny.Client.ApiResponse<SubscriptionList> localVarResponse = ListSubscriptionsWithHttpInfo(custId, sort, limit, startKey);
             return localVarResponse.Data;
@@ -745,8 +745,12 @@ namespace Antenny.API
         /// <param name="limit">Limits the number of returned items (optional)</param>
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <returns>ApiResponse of SubscriptionList</returns>
-        public Antenny.Client.ApiResponse<SubscriptionList> ListSubscriptionsWithHttpInfo(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string))
+        public Antenny.Client.ApiResponse<SubscriptionList> ListSubscriptionsWithHttpInfo(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string))
         {
+            // verify the required parameter 'custId' is set
+            if (custId == null)
+                throw new Antenny.Client.ApiException(400, "Missing required parameter 'custId' when calling SubscriptionApi->ListSubscriptions");
+
             Antenny.Client.RequestOptions localVarRequestOptions = new Antenny.Client.RequestOptions();
 
             String[] _contentTypes = new String[] {
@@ -805,7 +809,7 @@ namespace Antenny.API
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SubscriptionList</returns>
-        public async System.Threading.Tasks.Task<SubscriptionList> ListSubscriptionsAsync(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<SubscriptionList> ListSubscriptionsAsync(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Antenny.Client.ApiResponse<SubscriptionList> localVarResponse = await ListSubscriptionsWithHttpInfoAsync(custId, sort, limit, startKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -821,8 +825,12 @@ namespace Antenny.API
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SubscriptionList)</returns>
-        public async System.Threading.Tasks.Task<Antenny.Client.ApiResponse<SubscriptionList>> ListSubscriptionsWithHttpInfoAsync(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Antenny.Client.ApiResponse<SubscriptionList>> ListSubscriptionsWithHttpInfoAsync(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'custId' is set
+            if (custId == null)
+                throw new Antenny.Client.ApiException(400, "Missing required parameter 'custId' when calling SubscriptionApi->ListSubscriptions");
+
 
             Antenny.Client.RequestOptions localVarRequestOptions = new Antenny.Client.RequestOptions();
 

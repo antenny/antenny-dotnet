@@ -102,7 +102,7 @@ namespace Antenny.API
         /// <param name="limit">Limits the number of returned items (optional)</param>
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <returns>ClientList</returns>
-        ClientList ListClients(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string));
+        ClientList ListClients(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string));
 
         /// <summary>
         /// Gets a list of clients
@@ -116,7 +116,7 @@ namespace Antenny.API
         /// <param name="limit">Limits the number of returned items (optional)</param>
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <returns>ApiResponse of ClientList</returns>
-        ApiResponse<ClientList> ListClientsWithHttpInfo(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string));
+        ApiResponse<ClientList> ListClientsWithHttpInfo(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string));
         #endregion Synchronous Operations
     }
 
@@ -208,7 +208,7 @@ namespace Antenny.API
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ClientList</returns>
-        System.Threading.Tasks.Task<ClientList> ListClientsAsync(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ClientList> ListClientsAsync(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a list of clients
@@ -223,7 +223,7 @@ namespace Antenny.API
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ClientList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ClientList>> ListClientsWithHttpInfoAsync(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ClientList>> ListClientsWithHttpInfoAsync(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -710,7 +710,7 @@ namespace Antenny.API
         /// <param name="limit">Limits the number of returned items (optional)</param>
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <returns>ClientList</returns>
-        public ClientList ListClients(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string))
+        public ClientList ListClients(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string))
         {
             Antenny.Client.ApiResponse<ClientList> localVarResponse = ListClientsWithHttpInfo(custId, sort, limit, startKey);
             return localVarResponse.Data;
@@ -725,8 +725,12 @@ namespace Antenny.API
         /// <param name="limit">Limits the number of returned items (optional)</param>
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <returns>ApiResponse of ClientList</returns>
-        public Antenny.Client.ApiResponse<ClientList> ListClientsWithHttpInfo(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string))
+        public Antenny.Client.ApiResponse<ClientList> ListClientsWithHttpInfo(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string))
         {
+            // verify the required parameter 'custId' is set
+            if (custId == null)
+                throw new Antenny.Client.ApiException(400, "Missing required parameter 'custId' when calling ClientApi->ListClients");
+
             Antenny.Client.RequestOptions localVarRequestOptions = new Antenny.Client.RequestOptions();
 
             String[] _contentTypes = new String[] {
@@ -785,7 +789,7 @@ namespace Antenny.API
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ClientList</returns>
-        public async System.Threading.Tasks.Task<ClientList> ListClientsAsync(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ClientList> ListClientsAsync(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Antenny.Client.ApiResponse<ClientList> localVarResponse = await ListClientsWithHttpInfoAsync(custId, sort, limit, startKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -801,8 +805,12 @@ namespace Antenny.API
         /// <param name="startKey">Defines start of page of results (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ClientList)</returns>
-        public async System.Threading.Tasks.Task<Antenny.Client.ApiResponse<ClientList>> ListClientsWithHttpInfoAsync(Guid custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Antenny.Client.ApiResponse<ClientList>> ListClientsWithHttpInfoAsync(string custId, string sort = default(string), int? limit = default(int?), string startKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'custId' is set
+            if (custId == null)
+                throw new Antenny.Client.ApiException(400, "Missing required parameter 'custId' when calling ClientApi->ListClients");
+
 
             Antenny.Client.RequestOptions localVarRequestOptions = new Antenny.Client.RequestOptions();
 

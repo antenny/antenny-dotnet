@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 <a name="listclients"></a>
 # **ListClients**
-> ClientList ListClients (Guid custId, string sort = null, int? limit = null, string startKey = null)
+> ClientList ListClients (string custId, string sort = null, int? limit = null, string startKey = null)
 
 Gets a list of clients
 
@@ -272,7 +272,7 @@ namespace Example
             // config.AddApiKeyPrefix("X-API-Key", "Bearer");
 
             var apiInstance = new ClientApi(config);
-            var custId = new Guid(); // Guid | Customer Id to get clients for
+            var custId = custId_example;  // string | Customer Id to get clients for
             var sort = sort_example;  // string | Defines sort direction (optional) 
             var limit = 56;  // int? | Limits the number of returned items (optional) 
             var startKey = startKey_example;  // string | Defines start of page of results (optional) 
@@ -298,7 +298,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **custId** | [**Guid**](Guid.md)| Customer Id to get clients for | 
+ **custId** | **string**| Customer Id to get clients for | 
  **sort** | **string**| Defines sort direction | [optional] 
  **limit** | **int?**| Limits the number of returned items | [optional] 
  **startKey** | **string**| Defines start of page of results | [optional] 

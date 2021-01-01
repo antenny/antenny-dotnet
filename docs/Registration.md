@@ -5,8 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Guid** |  | [optional] 
 **CustomerId** | **Guid** |  | [optional] 
-**Secret** | **string** | Signing secret | [optional] 
-**Status** | **string** | Registration status | [optional] 
+**Secret** | **string** |  | [optional] 
+**Status** | **string** |  | [optional] 
 **Clients** | **List&lt;string&gt;** |  | [optional] 
 **Subscriptions** | **List&lt;string&gt;** |  | [optional] 
 **Created** | **DateTime** |  | [optional] 

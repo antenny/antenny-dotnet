@@ -32,37 +32,6 @@ namespace Antenny.Model
     public partial class Event : IEquatable<Event>, IValidatableObject
     {
         /// <summary>
-        /// Defines Level
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum LevelEnum
-        {
-            /// <summary>
-            /// Enum INFO for value: INFO
-            /// </summary>
-            [EnumMember(Value = "INFO")]
-            INFO = 1,
-
-            /// <summary>
-            /// Enum WARNING for value: WARNING
-            /// </summary>
-            [EnumMember(Value = "WARNING")]
-            WARNING = 2,
-
-            /// <summary>
-            /// Enum ERROR for value: ERROR
-            /// </summary>
-            [EnumMember(Value = "ERROR")]
-            ERROR = 3
-
-        }
-
-        /// <summary>
-        /// Gets or Sets Level
-        /// </summary>
-        [DataMember(Name = "level", EmitDefaultValue = false)]
-        public LevelEnum? Level { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="Event" /> class.
         /// </summary>
         /// <param name="id">id.</param>
@@ -72,7 +41,7 @@ namespace Antenny.Model
         /// <param name="message">message.</param>
         /// <param name="created">created.</param>
         /// <param name="modified">modified.</param>
-        public Event(Guid id = default(Guid), Guid subscriptionId = default(Guid), Guid customerId = default(Guid), LevelEnum? level = default(LevelEnum?), string message = default(string), DateTime created = default(DateTime), DateTime modified = default(DateTime))
+        public Event(Guid id = default(Guid), Guid subscriptionId = default(Guid), Guid customerId = default(Guid), string level = default(string), string message = default(string), DateTime created = default(DateTime), DateTime modified = default(DateTime))
         {
             this.Id = id;
             this.SubscriptionId = subscriptionId;
@@ -100,6 +69,12 @@ namespace Antenny.Model
         /// </summary>
         [DataMember(Name = "customerId", EmitDefaultValue = false)]
         public Guid CustomerId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Level
+        /// </summary>
+        [DataMember(Name = "level", EmitDefaultValue = false)]
+        public string Level { get; set; }
 
         /// <summary>
         /// Gets or Sets Message
@@ -187,7 +162,8 @@ namespace Antenny.Model
                 ) && 
                 (
                     this.Level == input.Level ||
-                    this.Level.Equals(input.Level)
+                    (this.Level != null &&
+                    this.Level.Equals(input.Level))
                 ) && 
                 (
                     this.Message == input.Message ||
@@ -221,7 +197,8 @@ namespace Antenny.Model
                     hashCode = hashCode * 59 + this.SubscriptionId.GetHashCode();
                 if (this.CustomerId != null)
                     hashCode = hashCode * 59 + this.CustomerId.GetHashCode();
-                hashCode = hashCode * 59 + this.Level.GetHashCode();
+                if (this.Level != null)
+                    hashCode = hashCode * 59 + this.Level.GetHashCode();
                 if (this.Message != null)
                     hashCode = hashCode * 59 + this.Message.GetHashCode();
                 if (this.Created != null)
