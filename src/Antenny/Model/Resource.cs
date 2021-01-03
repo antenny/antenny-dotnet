@@ -60,11 +60,15 @@ namespace Antenny.Model
         /// </summary>
         /// <param name="protocol">protocol (required).</param>
         /// <param name="url">url (required).</param>
-        public Resource(ProtocolEnum protocol = default(ProtocolEnum), string url = default(string))
+        /// <param name="headers">headers.</param>
+        /// <param name="messages">messages.</param>
+        public Resource(ProtocolEnum protocol = default(ProtocolEnum), string url = default(string), List<Header> headers = default(List<Header>), List<Message> messages = default(List<Message>))
         {
             this.Protocol = protocol;
             // to ensure "url" is required (not null)
             this.Url = url ?? throw new ArgumentNullException("url is a required property for Resource and cannot be null");
+            this.Headers = headers;
+            this.Messages = messages;
         }
 
         /// <summary>
@@ -72,6 +76,18 @@ namespace Antenny.Model
         /// </summary>
         [DataMember(Name = "url", EmitDefaultValue = false)]
         public string Url { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Headers
+        /// </summary>
+        [DataMember(Name = "headers", EmitDefaultValue = false)]
+        public List<Header> Headers { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Messages
+        /// </summary>
+        [DataMember(Name = "messages", EmitDefaultValue = false)]
+        public List<Message> Messages { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,6 +99,8 @@ namespace Antenny.Model
             sb.Append("class Resource {\n");
             sb.Append("  Protocol: ").Append(Protocol).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
+            sb.Append("  Headers: ").Append(Headers).Append("\n");
+            sb.Append("  Messages: ").Append(Messages).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -125,6 +143,18 @@ namespace Antenny.Model
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
+                ) && 
+                (
+                    this.Headers == input.Headers ||
+                    this.Headers != null &&
+                    input.Headers != null &&
+                    this.Headers.SequenceEqual(input.Headers)
+                ) && 
+                (
+                    this.Messages == input.Messages ||
+                    this.Messages != null &&
+                    input.Messages != null &&
+                    this.Messages.SequenceEqual(input.Messages)
                 );
         }
 
@@ -140,6 +170,10 @@ namespace Antenny.Model
                 hashCode = hashCode * 59 + this.Protocol.GetHashCode();
                 if (this.Url != null)
                     hashCode = hashCode * 59 + this.Url.GetHashCode();
+                if (this.Headers != null)
+                    hashCode = hashCode * 59 + this.Headers.GetHashCode();
+                if (this.Messages != null)
+                    hashCode = hashCode * 59 + this.Messages.GetHashCode();
                 return hashCode;
             }
         }

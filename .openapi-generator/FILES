@@ -5,7 +5,9 @@ docs/Endpoint.md
 docs/Event.md
 docs/EventList.md
 docs/EventsApi.md
+docs/Header.md
 docs/InlineObject.md
+docs/Message.md
 docs/ModelClient.md
 docs/NewClient.md
 docs/NewSubscription.md
@@ -41,7 +43,9 @@ src/Antenny/Model/ClientList.cs
 src/Antenny/Model/Endpoint.cs
 src/Antenny/Model/Event.cs
 src/Antenny/Model/EventList.cs
+src/Antenny/Model/Header.cs
 src/Antenny/Model/InlineObject.cs
+src/Antenny/Model/Message.cs
 src/Antenny/Model/ModelClient.cs
 src/Antenny/Model/NewClient.cs
 src/Antenny/Model/NewSubscription.cs

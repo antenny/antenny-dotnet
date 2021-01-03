@@ -31,7 +31,7 @@ namespace Antenny.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "1.1.0";
+        public const string Version = "1.2.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -96,7 +96,7 @@ namespace Antenny.Client
         [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
         public Configuration()
         {
-            UserAgent = "OpenAPI-Generator/1.1.0/csharp";
+            UserAgent = "OpenAPI-Generator/1.2.0/csharp";
             BasePath = "https://api.antenny.io";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -349,7 +349,7 @@ namespace Antenny.Client
             String report = "C# SDK (Antenny) Debug Report:\n";
             report += "    OS: " + System.Runtime.InteropServices.RuntimeInformation.OSDescription + "\n";
             report += "    Version of the API: 1.0.0\n";
-            report += "    SDK Package Version: 1.1.0\n";
+            report += "    SDK Package Version: 1.2.0\n";
 
             return report;
         }
