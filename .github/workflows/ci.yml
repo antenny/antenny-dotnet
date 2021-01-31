@@ -29,7 +29,9 @@ jobs:
     - name: Version
       id: version
       run: |
-        version="$(dotnet version -f ./src/Antenny/Antenny.csproj --output-format=json | jq -r '.currentVersion')"
+        out="$(dotnet-version -f ./src/Antenny/Antenny.csproj --output-format=json)"
+        echo "::debug name=out::out $out"
+        version="$(echo $out | jq -r '.currentVersion')"
         echo "::debug name=version::version $version"
         echo "::set-output name=VERSION::$version"
     - name: Release
