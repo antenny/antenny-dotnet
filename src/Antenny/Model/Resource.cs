@@ -41,7 +41,13 @@ namespace Antenny.Model
             /// Enum Ws for value: ws
             /// </summary>
             [EnumMember(Value = "ws")]
-            Ws = 1
+            Ws = 1,
+
+            /// <summary>
+            /// Enum Http for value: http
+            /// </summary>
+            [EnumMember(Value = "http")]
+            Http = 2
 
         }
 
